@@ -1,0 +1,81 @@
+/* src/gmail.css */
+
+.gmail-view{display:flex;flex-direction:column;gap:0;height:100%;overflow-y:auto;background:var(--off)}
+
+/* Header */
+.gmail-header{display:flex;align-items:flex-start;justify-content:space-between;padding:24px 28px 20px;background:var(--white);border-bottom:1px solid var(--border);flex-shrink:0;gap:20px}
+.gmail-title{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:22px;font-weight:400;color:var(--ink);letter-spacing:-.4px;margin-bottom:6px}
+.gmail-logo{width:30px;height:30px;border-radius:8px;background:#ea4335;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.gmail-desc{font-size:12.5px;color:var(--ink3);line-height:1.5;max-width:480px}
+.gmail-connect-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--r-sm);background:var(--white);border:1.5px solid var(--border2);color:var(--ink);font-family:'Geist',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;flex-shrink:0;box-shadow:var(--shadow-sm)}
+.gmail-connect-btn:hover{border-color:var(--ink);box-shadow:var(--shadow-md)}
+
+/* Setup guide */
+.gmail-setup-guide{margin:20px 28px;background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;flex-shrink:0}
+.gmail-setup-steps-title{padding:14px 20px;background:var(--off);border-bottom:1px solid var(--border);font-size:13px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:1}
+.gmail-setup-steps{display:flex;flex-direction:column}
+.gmail-setup-step{display:flex;gap:14px;padding:14px 20px;border-bottom:1px solid var(--border);align-items:flex-start}
+.gmail-setup-step:last-child{border-bottom:none}
+.gmail-setup-step-num{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px}
+.gmail-setup-step-body{flex:1;min-width:0}
+.gmail-setup-step-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.gmail-setup-step-desc{font-size:12px;color:var(--ink2);line-height:1.5;margin-bottom:6px}
+.gmail-setup-code{font-family:'Geist Mono',monospace;font-size:11px;background:var(--off);border:1px solid var(--border);border-radius:6px;padding:8px 12px;color:var(--ink2);position:relative;margin-bottom:6px;white-space:pre-wrap;word-break:break-all;padding-right:64px}
+.gmail-copy-btn{position:absolute;top:6px;right:8px;padding:2px 8px;border-radius:4px;background:var(--white);border:1px solid var(--border);font-size:10px;font-weight:600;cursor:pointer;font-family:'Geist',sans-serif;color:var(--ink2)}
+.gmail-copy-btn:hover{border-color:var(--border2);color:var(--ink)}
+.gmail-setup-link{font-size:12px;color:var(--blue);font-weight:500;text-decoration:none}
+.gmail-setup-link:hover{text-decoration:underline}
+
+@media (max-width: 900px) {
+	.gmail-setup-guide{margin:16px}
+	.gmail-setup-steps-title{padding:12px 14px}
+	.gmail-setup-step{padding:12px 14px}
+}
+
+/* Section label */
+.gmail-section-label{font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--ink4);padding:16px 28px 8px}
+
+/* Connected accounts */
+.gmail-accounts{background:var(--off)}
+.gmail-account-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);margin:0 28px 10px;overflow:hidden}
+.gmail-account-main{display:flex;align-items:center;gap:16px;padding:16px 20px;flex-wrap:wrap}
+.gmail-account-avatar{position:relative;flex-shrink:0}
+.gmail-avatar-placeholder{width:40px;height:40px;border-radius:50%;background:var(--off2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--ink2)}
+.gmail-status-dot{position:absolute;bottom:0;right:0;width:10px;height:10px;border-radius:50%;background:#16a34a;border:2px solid var(--white)}
+.gmail-account-info{flex:1;min-width:0}
+.gmail-account-email{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.gmail-account-name{font-size:12px;color:var(--ink3);margin-bottom:3px}
+.gmail-account-meta{font-size:11px;color:var(--ink4);font-family:'Geist Mono',monospace}
+.gmail-account-actions{display:flex;gap:8px;align-items:center;flex-shrink:0}
+
+/* Quota */
+.gmail-quota{width:160px;flex-shrink:0}
+.quota-bar-wrap{height:4px;background:var(--border);border-radius:2px;margin-bottom:5px;overflow:hidden}
+.quota-bar{height:100%;border-radius:2px;transition:width .3s}
+.quota-text{font-size:10.5px;color:var(--ink3);font-family:'Geist Mono',monospace}
+
+/* Fetch result */
+.fetch-result{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--accent-light);border-top:1px solid #c3e6d4;font-size:12.5px;color:var(--ink2)}
+.fetch-result-icon{color:var(--accent);font-weight:700;font-size:14px}
+
+/* Fetch presets */
+.gmail-fetch-options{padding:0 28px 20px}
+.preset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-bottom:12px}
+.preset-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:14px;cursor:pointer;transition:all .15s}
+.preset-card:hover{border-color:var(--border2);box-shadow:var(--shadow-sm)}
+.preset-card.selected{border-color:var(--ink);background:var(--off)}
+.preset-icon{font-size:20px;margin-bottom:6px}
+.preset-label{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.preset-desc{font-size:11px;color:var(--ink3);line-height:1.4}
+
+/* Custom query */
+.custom-query-box{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-top:8px}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-label{font-size:12px;font-weight:600;color:var(--ink2)}
+.form-hint{font-size:11px;color:var(--ink3)}
+
+/* Privacy */
+.gmail-privacy{display:flex;gap:14px;margin:8px 28px 28px;padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg)}
+.privacy-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.privacy-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:5px}
+.privacy-body{font-size:12px;color:var(--ink2);line-height:1.65}
