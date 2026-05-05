@@ -12,21 +12,30 @@
 }
 
 /* Subtle background blobs */
-.auth-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.auth-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
 .auth-bg-circle {
   position: absolute;
   border-radius: 50%;
   opacity: 0.06;
 }
 .auth-bg-circle.c1 {
-  width: 500px; height: 500px;
+  width: 500px;
+  height: 500px;
   background: var(--accent);
-  top: -150px; right: -100px;
+  top: -150px;
+  right: -100px;
 }
 .auth-bg-circle.c2 {
-  width: 400px; height: 400px;
+  width: 400px;
+  height: 400px;
   background: var(--blue);
-  bottom: -100px; left: -80px;
+  bottom: -100px;
+  left: -80px;
 }
 
 /* Card */
@@ -37,14 +46,22 @@
   padding: 36px 32px 28px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 8px 40px rgba(26,25,22,0.10), 0 2px 8px rgba(26,25,22,0.06);
+  box-shadow:
+    0 8px 40px rgba(26, 25, 22, 0.1),
+    0 2px 8px rgba(26, 25, 22, 0.06);
   position: relative;
   z-index: 1;
   animation: cardIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 @keyframes cardIn {
-  from { opacity: 0; transform: translateY(16px) scale(0.98); }
-  to   { opacity: 1; transform: translateY(0)    scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Logo */
@@ -55,25 +72,31 @@
   margin-bottom: 28px;
 }
 .auth-logo-mark {
-  width: 36px; height: 36px;
+  width: 36px;
+  height: 36px;
   background: var(--ink);
   border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--white);
   font-size: 18px;
 }
 .auth-logo-name {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 20px;
   font-weight: 500;
   color: var(--ink);
   letter-spacing: -0.3px;
 }
-.auth-logo-name span { color: var(--accent-mid); font-style: italic; }
+.auth-logo-name span {
+  color: var(--accent-mid);
+  font-style: italic;
+}
 
 /* Headings */
 .auth-heading {
-  font-family: 'Fraunces', serif;
+  font-family: "Fraunces", serif;
   font-size: 22px;
   font-weight: 400;
   color: var(--ink);
@@ -88,8 +111,16 @@
 }
 
 /* Form */
-.auth-form { display: flex; flex-direction: column; gap: 16px; }
-.auth-field { display: flex; flex-direction: column; gap: 6px; }
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 .auth-label {
   font-size: 11.5px;
   font-weight: 600;
@@ -107,7 +138,9 @@
   transition: border-color 0.15s;
   background: var(--white);
 }
-.auth-phone-wrap:focus-within { border-color: var(--ink); }
+.auth-phone-wrap:focus-within {
+  border-color: var(--ink);
+}
 .auth-country-code {
   display: flex;
   align-items: center;
@@ -122,21 +155,26 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
-.flag { font-size: 16px; }
+.flag {
+  font-size: 16px;
+}
 .auth-phone-input {
   flex: 1;
   height: 46px;
   border: none;
   outline: none;
   padding: 0 14px;
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
   font-size: 15px;
   font-weight: 500;
   color: var(--ink);
   background: transparent;
   letter-spacing: 0.5px;
 }
-.auth-phone-input::placeholder { color: var(--ink4); font-weight: 400; }
+.auth-phone-input::placeholder {
+  color: var(--ink4);
+  font-weight: 400;
+}
 
 /* Regular input */
 .auth-input {
@@ -144,7 +182,7 @@
   border: 1.5px solid var(--border);
   border-radius: 10px;
   padding: 0 14px;
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
   font-size: 14px;
   color: var(--ink);
   background: var(--white);
@@ -152,8 +190,12 @@
   transition: border-color 0.15s;
   width: 100%;
 }
-.auth-input:focus { border-color: var(--ink); }
-.auth-input::placeholder { color: var(--ink4); }
+.auth-input:focus {
+  border-color: var(--ink);
+}
+.auth-input::placeholder {
+  color: var(--ink4);
+}
 
 /* Submit button */
 .auth-btn {
@@ -162,17 +204,26 @@
   background: var(--ink);
   color: var(--white);
   border: none;
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
+  transition:
+    background 0.15s,
+    transform 0.1s;
   margin-top: 4px;
   letter-spacing: -0.1px;
 }
-.auth-btn:hover:not(:disabled) { background: #2d2b27; }
-.auth-btn:active:not(:disabled) { transform: scale(0.99); }
-.auth-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.auth-btn:hover:not(:disabled) {
+  background: #2d2b27;
+}
+.auth-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+.auth-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
 
 /* Switch mode */
 .auth-switch {
@@ -185,13 +236,15 @@
   background: none;
   border: none;
   color: var(--accent-mid);
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   padding: 0;
 }
-.auth-switch-btn:hover { text-decoration: underline; }
+.auth-switch-btn:hover {
+  text-decoration: underline;
+}
 
 /* Mobile display (step 2) */
 .auth-mobile-display {
@@ -209,7 +262,9 @@
   cursor: pointer;
   transition: border-color 0.15s;
 }
-.auth-mobile-display:hover { border-color: var(--border2); }
+.auth-mobile-display:hover {
+  border-color: var(--border2);
+}
 .auth-change {
   font-size: 12px;
   font-weight: 500;
@@ -241,19 +296,22 @@
   border: 1.5px solid var(--border);
   border-radius: 10px;
   text-align: center;
-  font-family: 'Geist Mono', monospace;
+  font-family: "Geist Mono", monospace;
   font-size: 22px;
   font-weight: 500;
   color: var(--ink);
   background: var(--off);
   outline: none;
-  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    transform 0.1s;
   caret-color: transparent;
 }
 .auth-code-box:focus {
   border-color: var(--ink);
   background: var(--white);
-  box-shadow: 0 0 0 3px rgba(26,25,22,0.06);
+  box-shadow: 0 0 0 3px rgba(26, 25, 22, 0.06);
 }
 .auth-code-box.filled {
   border-color: var(--accent);
@@ -261,7 +319,9 @@
   color: var(--accent);
   transform: scale(1.03);
 }
-.auth-code-box:disabled { opacity: 0.5; }
+.auth-code-box:disabled {
+  opacity: 0.5;
+}
 
 /* Loading */
 .auth-loading {
@@ -274,7 +334,8 @@
   margin-bottom: 16px;
 }
 .auth-spin {
-  width: 16px; height: 16px;
+  width: 16px;
+  height: 16px;
   border: 2px solid var(--border);
   border-top-color: var(--ink);
   border-radius: 50%;
@@ -294,9 +355,16 @@
   animation: shake 0.3s ease;
 }
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25%       { transform: translateX(-4px); }
-  75%       { transform: translateX(4px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
 }
 
 /* Back button */
@@ -306,12 +374,14 @@
   background: none;
   border: none;
   color: var(--ink3);
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
   font-size: 13px;
   cursor: pointer;
   padding: 4px 0;
 }
-.auth-back:hover { color: var(--ink); }
+.auth-back:hover {
+  color: var(--ink);
+}
 
 /* Footer */
 .auth-footer {
@@ -320,4 +390,24 @@
   color: var(--ink4);
   margin-top: 24px;
   line-height: 1.5;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 480px) {
+  .auth-shell {
+    padding: 12px;
+  }
+  .auth-card {
+    padding: 24px 18px 20px;
+    border-radius: 16px;
+  }
+  .auth-code-wrap {
+    gap: 7px;
+  }
+  .auth-code-box {
+    width: 40px;
+    height: 48px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
 }
