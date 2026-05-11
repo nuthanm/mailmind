@@ -370,7 +370,7 @@ export default async function handler(req, res) {
     try {
       await sql`
         UPDATE gmail_accounts
-        SET is_active = false, access_token_enc = null, refresh_token_enc = null
+        SET is_active = false, access_token_enc = '', refresh_token_enc = ''
         WHERE id = ${accountId} AND user_id = ${user.userId}
       `
       return ok(res, { message: 'Gmail account disconnected' })
