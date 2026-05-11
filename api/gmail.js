@@ -367,12 +367,16 @@ export default async function handler(req, res) {
   // ── DISCONNECT ACCOUNT ──
   if (subpath.startsWith('disconnect/') && req.method === 'DELETE') {
     const accountId = subpath.replace('disconnect/', '')
-    await sql`
-      UPDATE gmail_accounts
-      SET is_active = false, access_token_enc = null, refresh_token_enc = null
-      WHERE id = ${accountId} AND user_id = ${user.userId}
-    `
-    return ok(res, { message: 'Gmail account disconnected' })
+    try {
+      await sql`
+        UPDATE gmail_accounts
+        SET is_active = false, access_token_enc = null, refresh_token_enc = null
+        WHERE id = ${accountId} AND user_id = ${user.userId}
+      `
+      return ok(res, { message: 'Gmail account disconnected' })
+    } catch (e) {
+      return err(res, 500, e.message)
+    }
   }
 
   return err(res, 404, 'Route not found')
