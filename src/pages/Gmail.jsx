@@ -51,6 +51,7 @@ export default function Gmail() {
   const [customMax, setCustomMax] = useState(50)
   const [showCustom, setShowCustom] = useState(false)
   const [fetchResult, setFetchResult] = useState(null)
+  const [disconnectModal, setDisconnectModal] = useState(null)  // { accountId, email }
 
   const showToast = (msg, type = 'default') => {
     setToast({ msg, type })
@@ -118,8 +119,14 @@ export default function Gmail() {
     fetchEmails(accountId, options)
   }
 
-  const disconnect = async (accountId, email) => {
-    if (!window.confirm(`Disconnect ${email}? This will remove the connection but not delete fetched emails.`)) return
+  const disconnect = (accountId, email) => {
+    setDisconnectModal({ accountId, email })
+  }
+
+  const confirmDisconnect = async () => {
+    if (!disconnectModal) return
+    const { accountId } = disconnectModal
+    setDisconnectModal(null)
     try {
       await gmailApi.disconnect(accountId)
       showToast('Account disconnected', 'success')
@@ -354,6 +361,25 @@ export default function Gmail() {
 
       {toast && (
         <div className={`unsub-toast ${toast.type || ''}`}>{toast.msg}</div>
+      )}
+
+      {disconnectModal && (
+        <div className="confirm-overlay">
+          <div className="confirm-card">
+            <div className="confirm-title">Disconnect Gmail Account?</div>
+            <div className="confirm-msg">
+              Disconnect <strong>{disconnectModal.email}</strong>? This will remove the connection but not delete fetched emails.
+            </div>
+            <div className="confirm-actions">
+              <button className="btn-ghost" onClick={() => setDisconnectModal(null)}>
+                Cancel
+              </button>
+              <button className="btn-danger" onClick={confirmDisconnect}>
+                Disconnect
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   )

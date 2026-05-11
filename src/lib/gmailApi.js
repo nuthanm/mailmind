@@ -7,7 +7,13 @@ async function req(method, path, body = null) {
   }
   if (body) opts.body = JSON.stringify(body)
   const res = await fetch(`/api${path}`, opts)
-  const data = await res.json()
+  const text = await res.text()
+  let data
+  try {
+    data = JSON.parse(text)
+  } catch {
+    throw new Error(text.trim().substring(0, 200) || `Server error (${res.status})`)
+  }
   if (!data.ok) throw new Error(data.error || 'Request failed')
   return data
 }

@@ -5,7 +5,7 @@ import { fmtTime } from '../lib/samples'
 
 export default function RightPanel() {
   const { selectedEmail } = useApp()
-  const [tab, setTab] = useState('extract')
+  const [tab, setTab] = useState('message')
 
   if (!selectedEmail) return (
     <aside className="right-panel">
@@ -23,7 +23,7 @@ export default function RightPanel() {
         <div className="rp-email-from">{selectedEmail.from_name}</div>
         <div className="rp-email-sub">{selectedEmail.subject} · {fmtTime(selectedEmail.received_at)}</div>
         <div className="rp-tabs">
-          {['extract', 'draft', 'log'].map(t => (
+          {['message', 'extract', 'draft', 'log'].map(t => (
             <button key={t} className={`rp-tab${tab === t ? ' active' : ''}`} onClick={() => setTab(t)}>
               {t.charAt(0).toUpperCase() + t.slice(1)}
             </button>
@@ -31,11 +31,36 @@ export default function RightPanel() {
         </div>
       </div>
       <div className="rp-body">
+        {tab === 'message' && <MessageTab email={selectedEmail} />}
         {tab === 'extract' && <ExtractTab email={selectedEmail} />}
         {tab === 'draft' && <DraftTab email={selectedEmail} />}
         {tab === 'log' && <LogTab email={selectedEmail} />}
       </div>
     </aside>
+  )
+}
+
+function MessageTab({ email }) {
+  const body = email.body || ''
+  const lines = body.split('\n')
+
+  return (
+    <div className="msg-view">
+      <div className="msg-meta-row">
+        <span className="msg-meta-label">From</span>
+        <span className="msg-meta-val">{email.from_name}{email.from_email ? ` <${email.from_email}>` : ''}</span>
+      </div>
+      <div className="msg-meta-row">
+        <span className="msg-meta-label">Subject</span>
+        <span className="msg-meta-val">{email.subject || '(no subject)'}</span>
+      </div>
+      <div className="msg-divider" />
+      <div className="msg-body">
+        {lines.map((line, i) => (
+          <p key={i} className={line.trim() === '' ? 'msg-blank' : 'msg-line'}>{line || ' '}</p>
+        ))}
+      </div>
+    </div>
   )
 }
 

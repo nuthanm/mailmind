@@ -552,7 +552,7 @@ export default function EmailList() {
             onClick={deleteSelected}
             disabled={uiLocked || selectedIds.size === 0}
           >
-            Delete Selected
+            Delete Selected{selectedIds.size > 0 ? ` (${selectedIds.size})` : ""}
           </button>
         </div>
       </div>
