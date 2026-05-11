@@ -245,6 +245,7 @@ export default function EmailList() {
       title: `Delete ${ids.length} Email${ids.length !== 1 ? "s" : ""} from ${senderLabel}?`,
       message: `All ${ids.length} email${ids.length !== 1 ? "s" : ""} from selected sender group${senderCount > 1 ? "s" : ""} will be removed. Gmail-linked emails will be moved to Gmail Trash.`,
       spaceKb: totalKb,
+      clearSenders: true,
     });
   };
 
@@ -306,6 +307,7 @@ export default function EmailList() {
   const confirmDelete = async () => {
     if (deleting || !deleteModal?.ids?.length) return;
     const ids = deleteModal.ids;
+    const shouldClearSenders = deleteModal.clearSenders;
     setDeleteModal(null);
 
     setDeleting(true);
@@ -321,6 +323,9 @@ export default function EmailList() {
         ids.forEach((id) => next.delete(id));
         return next;
       });
+      if (shouldClearSenders) {
+        setSenderGroups(new Set());
+      }
     } finally {
       setDeleting(false);
     }
